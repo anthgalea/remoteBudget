@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import Currencies from './Currencies';
+import Expenses from './Expenses';
 
 class App extends Component {
   constructor() {
@@ -62,7 +63,7 @@ class App extends Component {
   } 
   
 
-  handleChange = (event) => {
+  handleCurrentChange = (event) => {
     const userSelection = event.target.value;
     // console.log('userSelection:', userSelection)
 
@@ -80,6 +81,27 @@ class App extends Component {
     })
   }
 
+
+
+  handleTargetChange = (event) => {
+    const targetSelection = event.target.value;
+    // console.log('userSelection:', userSelection)
+
+    // split the userSelection string to an array
+    const targetSelectionSplitArray= targetSelection.split('-')
+    // console.log('userSelectionSplitArray:', userSelectionSplitArray)
+
+    // get the currencyCode from the new array & trim to remove white space
+    const targetSelectionCurrencyCode = targetSelectionSplitArray[1]
+    // console.log('userSelectionCurrencyCode:', userSelectionCurrencyCode)
+    targetSelectionCurrencyCode.trim()
+
+    this.setState({
+			targetCurrencyCode: targetSelectionCurrencyCode,
+    })
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -93,7 +115,7 @@ class App extends Component {
             />
           </div>
           <div>
-            <select onChange={this.handleChange}>
+            <select onChange={this.handleCurrentChange}>
               {this.state.countryNames.map((country, index) => {
                 return (
                   <option key={index}>
@@ -104,7 +126,23 @@ class App extends Component {
               }
             </select>
           </div>
+
       </div>
+      <section>
+        <select onChange={this.handleTargetChange}>
+    
+          {this.state.countryNames.map((country, index) => {
+            return (
+              <option key={index}>
+                {`${country.name} - ${country.currencyCode}`}
+              </option>
+            )
+            })
+          }
+
+        </select>
+        <Expenses />
+      </section>
         <Currencies currentCurrencyCode={this.state.currentCurrencyCode} />
       </div>
     );
