@@ -8,7 +8,7 @@ class App extends Component {
     super();
     this.state = {
       countryNames: [],
-      currentCurrencyCode: {},
+      currentCurrencyCode: '',
       targetCurrencyCode: '',
       expensesTotal: 0,
     }
@@ -41,27 +41,32 @@ class App extends Component {
           this.setState({
             countryNames: newCountries,
             currentCurrencyCode: currencyCode
-            
+
           })
           // THIS IS WHAT WE USE TO TARGET THE OTHER API FOR THE $$ AMT
           // console.log(code, name);
           // if code == code from currencies.js, return that $$ from currencies state
         })
-        console.log(newCountries)
+        // console.log(newCountries)
       })
     })
   }
 
   handleChange = (event) => {
     const userSelection = event.target.value;
-    console.log('userSelection:', userSelection)
-    const userSelectionSplitArray= userSelection.split('-') // this is an array
-    console.log('userSelectionSplitArray:', userSelectionSplitArray)
-    const userSelectionCurrencyCode = userSelectionSplitArray[1] 
-    console.log('userSelectionCurrencyCode:', userSelectionCurrencyCode)
-    // this.setState({
-    //   currentSymbol: userSelection,
-    // })
+    // console.log('userSelection:', userSelection)
+
+    // split the userSelection string to an array
+    const userSelectionSplitArray= userSelection.split('-')
+    // console.log('userSelectionSplitArray:', userSelectionSplitArray)
+
+    // get the currencyCode from the new array & trim to remove white space
+    const userSelectionCurrencyCode = userSelectionSplitArray[1].trim()
+    // console.log('userSelectionCurrencyCode:', userSelectionCurrencyCode)
+
+    this.setState({
+			currentCurrencyCode: userSelectionCurrencyCode,
+		})
   }
 
   render() {
