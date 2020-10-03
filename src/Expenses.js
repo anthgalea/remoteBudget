@@ -12,6 +12,14 @@ class Expenses extends Component {
         return(
             <div className="expenses">
                 <div className="expense">
+                    <label htmlFor="">Housing</label>
+                    <input type="text" value=""/>
+                </div>
+                <div className="expense">
+                    <label htmlFor="">Bills</label>
+                    <input type="text" value="" />
+                </div>
+                <div className="expense">
                     <label htmlFor="">Food</label>
                     <input type="text" value=""/>
                 </div>
@@ -21,10 +29,6 @@ class Expenses extends Component {
                 </div>
                 <div className="expense">
                     <label htmlFor="">Entertainment</label>
-                    <input type="text" value=""/>
-                </div>
-                <div className="expense">
-                    <label htmlFor="">Housing</label>
                     <input type="text" value=""/>
                 </div>
             </div>
