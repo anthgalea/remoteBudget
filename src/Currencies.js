@@ -15,7 +15,7 @@ class Currencies extends Component {
         axios({
             url: 'https://api.exchangeratesapi.io/latest',
         }).then((res) => {
-            // console.log(res.data);
+            console.log(res.data);
             let CAD = res.data.rates.CAD;
             let USD = res.data.rates.USD;
             this.setState({
