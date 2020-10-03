@@ -82,7 +82,7 @@ class App extends Component {
             })
           }
         </select>
-        <Currencies />
+        <Currencies currentCurrencyCode={this.state.currentCurrencyCode} />
       </div>
     );
   };
