@@ -105,16 +105,26 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="userIncomeSection">
+
+        <div className="burgundy"></div>
+        <div className="orange"></div>
+        
+        <h1>Remote Work Budget</h1>
+        <div className="userIncomeSection wrapper">
+
+          <h2 className="lineOne">First,</h2>
+          <h2>Select Your Current Income Status</h2>
+
           <div>
-            <label htmlFor="incomeAmount">Income Amount</label>
+            <label htmlFor="incomeAmount">Income Amount:</label>
             <input 
               type="text" id="incomeAmount" 
               value={this.state.userInputIncomeAmount}
               onChange={this.handleIncomeInputChange}
             />
           </div>
-          <div>
+
+          <div className="incomeDrop">
             <select onChange={this.handleCurrentChange}>
               {this.state.countryNames.map((country, index) => {
                 return (
@@ -126,23 +136,25 @@ class App extends Component {
               }
             </select>
           </div>
+        </div>
 
-      </div>
-      <section>
-        <select onChange={this.handleTargetChange}>
-    
-          {this.state.countryNames.map((country, index) => {
-            return (
-              <option key={index}>
-                {`${country.name} - ${country.currencyCode}`}
-              </option>
-            )
-            })
-          }
+        <section className="target wrapper">
+          <h2 className="lineOne">Next,</h2>
+          <h2>Select Your Projected Expenses in your New Destination:</h2>
+          <Expenses />
+          <select onChange={this.handleTargetChange}>
+            {this.state.countryNames.map((country, index) => {
+              return (
+                <option key={index}>
+                  {`${country.name} - ${country.currencyCode}`}
+                </option>
+              )
+              })
+            }
+          </select>
 
-        </select>
-        <Expenses />
-      </section>
+        </section>
+
         <Currencies currentCurrencyCode={this.state.currentCurrencyCode} />
       </div>
     );
