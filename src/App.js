@@ -11,6 +11,7 @@ class App extends Component {
       currentCurrencyCode: '',
       targetCurrencyCode: '',
       expensesTotal: 0,
+      userInputIncomeAmount: 0
     }
   }
 
@@ -52,6 +53,15 @@ class App extends Component {
     })
   }
 
+  handleIncomeInputChange = (event) => {
+    const incomeInput =  event.target.value 
+    console.log(incomeInput)
+    this.setState ({
+      userInputIncomeAmount: incomeInput
+    })
+  } 
+  
+
   handleChange = (event) => {
     const userSelection = event.target.value;
     // console.log('userSelection:', userSelection)
@@ -73,16 +83,28 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <select onChange={this.handleChange}>
-          {this.state.countryNames.map((country, index) => {
-            return (
-              <option key={index}>
-                {`${country.name} - ${country.currencyCode}`}
-              </option>
-            )
-            })
-          }
-        </select>
+        <div className="userIncomeSection">
+          <div>
+            <label htmlFor="incomeAmount">Income Amount</label>
+            <input 
+              type="text" id="incomeAmount" 
+              value={this.state.userInputIncomeAmount}
+              onChange={this.handleIncomeInputChange}
+            />
+          </div>
+          <div>
+            <select onChange={this.handleChange}>
+              {this.state.countryNames.map((country, index) => {
+                return (
+                  <option key={index}>
+                    {`${country.name} - ${country.currencyCode}`}
+                  </option>
+                )
+                })
+              }
+            </select>
+          </div>
+      </div>
         <Currencies currentCurrencyCode={this.state.currentCurrencyCode} />
       </div>
     );
