@@ -77,9 +77,20 @@ input {
   border-radius: 2px;
   padding: 2px 5px;
 }
+input:focus,
+input:hover {
+  border: white 1px solid;
+  box-shadow: 2px 2px 2px white;
+}
 select {
   margin: 10px;
   padding: 5px;
+  font-size: calc(1rem + 0.5vw);
+}
+select:focus,
+select:hover {
+  border: 1px #81003c solid;
+  box-shadow: 3px 3px 5px #81003c;
 }
 label {
   font-size: calc(1rem + 0.7vw);
@@ -128,16 +139,27 @@ h2.lineOne {
   justify-content: space-between;
   align-items: center;
 }
-
-
-/* Portrait tablet and small desktops */
-@media (max-width: 940px) {
+.expense input {
+  align-self: flex-end;
 }
+
+
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {
+  .expense {
+    width: 70%;
+  }
+}
+
+/* Landscape phones and down */
+@media (max-width: 620px) {
+  .expense {
+    width: 90%;
+  }
 }
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
+ /* //TODO WOW this is bad */
 }
