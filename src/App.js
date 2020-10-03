@@ -61,12 +61,13 @@ class App extends Component {
     // console.log('userSelectionSplitArray:', userSelectionSplitArray)
 
     // get the currencyCode from the new array & trim to remove white space
-    const userSelectionCurrencyCode = userSelectionSplitArray[1].trim()
+    const userSelectionCurrencyCode = userSelectionSplitArray[1]
     // console.log('userSelectionCurrencyCode:', userSelectionCurrencyCode)
+    userSelectionCurrencyCode.trim()
 
     this.setState({
 			currentCurrencyCode: userSelectionCurrencyCode,
-		})
+    })
   }
 
   render() {
