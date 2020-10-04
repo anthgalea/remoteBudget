@@ -113,7 +113,7 @@ class App extends Component {
         <div className="userIncomeSection wrapper">
 
           <h2 className="lineOne">First,</h2>
-          <h2>Select Your Current Income Status</h2>
+          <h2>Enter Your Current Income Status</h2>
 
           <div>
             <label htmlFor="incomeAmount">Income Amount:</label>
@@ -140,7 +140,7 @@ class App extends Component {
 
         <section className="target wrapper">
           <h2 className="lineOne">Next,</h2>
-          <h2>Select Your Projected Expenses in your New Destination:</h2>
+          <h2>Enter Your Projected Expenses in your New Destination:</h2>
           <Expenses />
           <select onChange={this.handleTargetChange}>
             {this.state.countryNames.map((country, index) => {
