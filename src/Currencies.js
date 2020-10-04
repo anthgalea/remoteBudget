@@ -41,10 +41,10 @@ class Currencies extends Component {
     // converting to array of numbers to use later in the calculation
     let newExpensesArray = expensesArray.map(number => {
       console.log(number)
-      return parseInt(number)
+      return parseFloat(number)
     })
 
-    // console.log('numArray:', numArray)
+    console.log('numArray:', newExpensesArray)
 
     // building the calculation
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
@@ -139,8 +139,8 @@ class Currencies extends Component {
 					Calculate Total
 				</button>
                 <div className="totalExpenses">
-                    <p>Total</p>
-                    <p>{this.props.expensesTotal}</p>
+                  {/* use conditional statement to display */}
+                    <p>Total: ${this.state.totalExpenses}</p>
                 </div>
 
 
