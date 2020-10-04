@@ -56,7 +56,7 @@ a {
   width: 100%;
   position: absolute;
   background-color: #81003c;
-  top: 100px;
+  top: 120px;
   z-index: -1;
 }
 
@@ -93,7 +93,7 @@ select:hover {
   box-shadow: 3px 3px 5px #81003c;
 }
 label {
-  font-size: calc(1rem + 0.7vw);
+  font-size: calc(1.2rem + 0.7vw);
   padding: 0 10px;
 }
 
@@ -113,16 +113,16 @@ label {
 
 h2 {
   margin: 0 0 15px;
+  font-size: calc(1.8rem + 0.5rem);
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
 }
 h2.lineOne {
-  margin: 0;
+  margin: 5px 0 0;
   padding: 0;
   font-style: italic;
 }
 
 .expenses {
-  border-top: 1px black dotted;
   padding: 10px 0;
   display: flex;
   flex-direction: column;
@@ -144,20 +144,46 @@ h2.lineOne {
 
 
 /* Landscape phone to portrait tablet */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .expense {
     width: 70%;
   }
 }
 
 /* Landscape phones and down */
-@media (max-width: 620px) {
+@media (max-width: 600px) {
   .expense {
     width: 90%;
+  }
+  .burgundy {
+    top: 100px;
   }
 }
 
 /* Landscape phones and down */
-@media (max-width: 480px) {
- /* //TODO WOW this is bad */
+@media (max-width: 540px) {
+  .expense {
+    width: 95%;
+  }
+  .burgundy {
+    top: 150px;
+  }
+
+}
+
+@media (max-width: 460px) {
+  .expenses {
+    margin: 0;
+    width: 100%;
+  }
+  .expense {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .burgundy {
+    top: 165px;
+  }
+
 }
