@@ -172,18 +172,11 @@ h2.lineOne {
 }
 
 @media (max-width: 460px) {
-  .expenses {
-    margin: 0;
-    width: 100%;
-  }
-  .expense {
-    width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  /*  TODO fix this size only */
   .burgundy {
     top: 165px;
   }
-
+  select {
+    width: 90%;
+  }
 }
