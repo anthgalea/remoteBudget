@@ -187,7 +187,14 @@ h2.lineOne {
 @media (max-width: 460px) {
   /*  TODO fix this size only */
   .burgundy {
-    /* height: 190px; */
     top: 150px;
+  }
+  .expense {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .expense input {
+    align-self: center;
   }
 }
