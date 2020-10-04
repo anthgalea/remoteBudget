@@ -44,7 +44,7 @@ a {
 }
 
 .orange {
-  width: 170px;
+  width: 200px;
   height: 110%;
   background-color: rgb(255, 118, 0);
   position: absolute;
@@ -91,8 +91,7 @@ select {
 }
 select:focus,
 select:hover {
-  border: 1px #81003c solid;
-  box-shadow: 3px 3px 5px #81003c;
+  box-shadow: 2px 2px 5px white;
 }
 label {
   font-size: calc(1.2rem + 0.7vw);
@@ -185,7 +184,6 @@ h2.lineOne {
 }
 
 @media (max-width: 460px) {
-  /*  TODO fix this size only */
   .burgundy {
     top: 150px;
   }
