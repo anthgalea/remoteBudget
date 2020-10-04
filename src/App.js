@@ -11,7 +11,6 @@ class App extends Component {
       countryNames: [],
       currentCurrencyCode: '',
       targetCurrencyCode: '',
-      expensesTotal: 0,
       userInputIncomeAmount: 0
     }
   }
@@ -141,7 +140,8 @@ class App extends Component {
         <section className="target wrapper">
           <h2 className="lineOne">Next,</h2>
           <h2>Enter Your Projected Expenses in your New Destination:</h2>
-          <Expenses />
+          {/* <Expenses/> */}
+
           <select onChange={this.handleTargetChange}>
             {this.state.countryNames.map((country, index) => {
               return (

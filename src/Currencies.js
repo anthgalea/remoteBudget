@@ -8,8 +8,10 @@ class Currencies extends Component {
         this.state = {
             ratesObj: {},
             baseSymbolVal: '',
-            targetSymbolVal: '',
-        }
+			targetSymbolVal: '',
+			totalExpenses: 0,
+			values: [{}]
+		}
     }
 
 	// take the props from app.js as symbols, use them in our symbol endpoint which returns 
@@ -42,12 +44,64 @@ class Currencies extends Component {
 	// 	}
 	// }
 
+	// handleClick = (event) => {
+	// 	this.setState({
+	// 		value: 
+	// 	})
+	// }
+
+	// handleChange=(i, event) => {
+	// 	// console.log("new value", event.target.value);
+
+	// 	const {name, value} = event.target;
+	// 	this.setState(prevState => {
+	// 		let values = [...prevState.values];
+	// 		values[i] =  {...values[i], [name]: value};
+	// 		console.log(this.state.values)
+	// 		return { values };
+	// 	})
+	// }
+
+
+
 
     render() {
         return (
 			<div className="class">
 				<p>{this.props.currentCurrencyCode}</p>
 				<p>{this.props.targetCurrencyCode}</p>
+				<div className="expenses">
+                <div className="expense">
+                    <label htmlFor="">Housing</label>
+                    <input type="text" id="housing" onChange={this.handleChange} value={this.state.expensesArray} />
+                </div>
+                <div className="expense">
+                    <label htmlFor="">Bills</label>
+                    <input type="text" id="bills" onChange={this.handleChange} value={this.state.expensesArray} />
+                </div>
+                <div className="expense">
+                    <label htmlFor="">Food</label>
+                    <input type="text" id="food" onChange={this.handleChange} value={this.state.expensesArray} />
+                </div>
+                <div className="expense">
+                    <label htmlFor="">Transport</label>
+                    <input type="text" id="transport" onChange={this.handleChange} value={this.state.expensesArray} />
+                </div>
+                <div className="expense">
+                    <label htmlFor="">Entertainment</label>
+                    <input type="text" id="entertainment" onChange={this.handleChange} value={this.state.expensesArray} />
+                </div>
+				<button className="calculateTotal" onClick={this.handleClick}>
+					Calculate Total
+				</button>
+                <div className="totalExpenses">
+                    <p>Total</p>
+                    <p>{this.props.expensesTotal}</p>
+                </div>
+
+				
+
+            </div>
 			</div>
 		)
     }

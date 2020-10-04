@@ -5,8 +5,12 @@ import './App.css';
 class Expenses extends Component {
     constructor(){
         super();
-        this.state={}
+        this.state={
+            totalExpenses: 0
+        }
     }
+
+    
 
     render() {
         return(
@@ -31,10 +35,20 @@ class Expenses extends Component {
                     <label htmlFor="">Entertainment</label>
                     <input type="text" value=""/>
                 </div>
+
+                <div className="totalExpenses">
+                    <p>Total</p>
+                    <p>{this.props.expensesTotal}</p>
+                </div>
+
             </div>
 
         )
     }
 }
+
+// goal is to display in our app.js what the user expenses total is.
+
+
 
 export default Expenses;
