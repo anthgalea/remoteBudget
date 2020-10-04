@@ -10,21 +10,53 @@ class Currencies extends Component {
           baseSymbolVal: '',
           targetSymbolVal: '',
           totalExpenses: 0,
-          housing: '',
-          bills: '',
-          entertainment: '',
-          food: '',
+          housing: 0,
+          bills: 0,
+          entertainment: 0,
+          food: 0,
+          transport: 0
         }
       this.handleChange = this.handleChange.bind(this);
     }
 
-
-  handleChange(evt) {
-    // check it out: we get the evt.target.name (which will be either "email" or "password")
+  handleChange = (evt) => {
     // and use it to target the key on our `state` object with the same name, using bracket syntax
-    this.setState({ [evt.target.name]: evt.target.value });
+    this.setState({
+      [evt.target.name]: evt.target.value
+    });
   }
 
+
+  calculateTotalExpenses = () => {
+    // array to store all the string values from the state
+    let expensesArray = [
+      this.state.food,
+      this.state.housing,
+      this.state.bills,
+      this.state.transport,
+      this.state.entertainment
+    ]
+    // console.log('expensesArray:', expensesArray)
+
+    // converting to array of numbers to use later in the calculation
+    let newExpensesArray = expensesArray.map(number => {
+      console.log(number)
+      return parseInt(number)
+    })
+
+    // console.log('numArray:', numArray)
+
+    // building the calculation
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+    // takes the number array and uses the reducer to calculate the total
+    let newTotal = newExpensesArray.reduce(reducer);
+    console.log('newTotal:', newTotal)
+
+    this.setState({
+      totalExpenses: newTotal,
+    })
+  }
 
 	// take the props from app.js as symbols, use them in our symbol endpoint which returns
 	// an object with them side by side
@@ -103,7 +135,7 @@ class Currencies extends Component {
                     <label htmlFor="">Entertainment</label>
                 <input name="entertainment"type="text" id="entertainment" onChange={this.handleChange} value={this.state.expensesArray} />
                 </div>
-				<button className="calculateTotal" onClick={this.handleClick}>
+              <button className="calculateTotal" onClick={this.calculateTotalExpenses}>
 					Calculate Total
 				</button>
                 <div className="totalExpenses">
