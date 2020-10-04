@@ -156,6 +156,8 @@ class App extends Component {
         </section>
 
         <Currencies currentCurrencyCode={this.state.currentCurrencyCode} />
+        <div className="results">Results go here okurrrt</div>
+        
       </div>
     );
   };

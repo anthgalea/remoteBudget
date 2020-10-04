@@ -112,40 +112,43 @@ class Currencies extends Component {
     render() {
         return (
 			<div className="class">
-				<p>{this.props.currentCurrencyCode}</p>
-				<p>{this.props.targetCurrencyCode}</p>
-				<div className="expenses">
-                <div className="expense">
-                    <label htmlFor="">Housing</label>
-                    <input name="housing" type="text" id="housing" onChange={this.handleChange} value={this.state.expensesArray} />
-                </div>
-                <div className="expense">
-                    <label htmlFor="">Bills</label>
-                    <input name="bills" type="text" id="bills" onChange={this.handleChange} value={this.state.expensesArray} />
-                </div>
-                <div className="expense">
-                    <label htmlFor="">Food</label>
-                    <input name="food" type="text" id="food" onChange={this.handleChange} value={this.state.expensesArray} />
-                </div>
-                <div className="expense">
-                    <label htmlFor="">Transport</label>
-                    <input name="transport" type="text" id="transport" onChange={this.handleChange} value={this.state.expensesArray} />
-                </div>
-                <div className="expense">
-                    <label htmlFor="">Entertainment</label>
-                <input name="entertainment"type="text" id="entertainment" onChange={this.handleChange} value={this.state.expensesArray} />
-                </div>
-              <button className="calculateTotal" onClick={this.calculateTotalExpenses}>
-					Calculate Total
-				</button>
-                <div className="totalExpenses">
-                  {/* use conditional statement to display */}
-                    <p>Total: ${this.state.totalExpenses}</p>
-                </div>
+
+				{/* <p>{this.props.currentCurrencyCode}</p>
+				<p>{this.props.targetCurrencyCode}</p> */}
+
+				<div className="expenses wrapper">
+          <div className="expense">
+              <label htmlFor="">Housing</label>
+              <input name="housing" type="text" id="housing" onChange={this.handleChange} value={this.state.expensesArray} />
+          </div>
+          <div className="expense">
+              <label htmlFor="">Bills</label>
+              <input name="bills" type="text" id="bills" onChange={this.handleChange} value={this.state.expensesArray} />
+          </div>
+          <div className="expense">
+              <label htmlFor="">Food</label>
+              <input name="food" type="text" id="food" onChange={this.handleChange} value={this.state.expensesArray} />
+          </div>
+          <div className="expense">
+              <label htmlFor="">Transport</label>
+              <input name="transport" type="text" id="transport" onChange={this.handleChange} value={this.state.expensesArray} />
+          </div>
+          <div className="expense">
+              <label htmlFor="">Entertainment</label>
+              <input name="entertainment"type="text" id="entertainment" onChange={this.handleChange} value={this.state.expensesArray} />
+          </div>
 
 
+          <div className="totalExpenses">
+            <button className="calculateTotal" onClick={this.calculateTotalExpenses}>
+            Calculate Total
+            </button>
+              {/* use conditional statement to display */}
+            <p>Total: ${this.state.totalExpenses}</p>
+          </div>
 
-            </div>
+        </div>
+
 			</div>
 		)
     }
