@@ -118,9 +118,9 @@ class Currencies extends Component {
         </div>
 
         <div className="results wrapper">
-            <h2>Results</h2>
+              <h2>Your <span className="lineOne">Future</span> Financial Status</h2>
               <p>You are making: <span className="resultStyle">${this.state.convertedIncome}</span> in (country code or name?)</p>
-              <p>You surplus/shortage is <span className="resultStyle">SUCH'NSUCH</span> dynamic render</p>
+              <p>Your surplus/shortage is <span className="resultStyle">SUCH'NSUCH</span> dynamic render</p>
         </div>
 
 			</div>

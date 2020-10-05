@@ -116,9 +116,9 @@ label {
 h2 {
   margin: 0 0 15px;
   font-size: calc(1.8rem + 0.5rem);
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
-h2.lineOne {
+.lineOne {
   margin: 5px 0 0;
   padding: 0;
   font-style: italic;
@@ -175,7 +175,8 @@ h2.lineOne {
   margin: 50px auto;
   padding: 0 10%;
   text-align: center;
-  font-size: calc(1.3rem + 0.5rem);
+  font-size: calc(1.5rem + 0.5vw);
+  text-shadow: 1px 1px 1px white;
 }
 .results p {
   border: 1px black solid;
@@ -184,6 +185,7 @@ h2.lineOne {
 .resultStyle {
   font-family: 'Montserrat', sans-serif;
   font-weight: 900;
+  font-size: calc(1.8rem + 0.6vw)
 }
 
 
