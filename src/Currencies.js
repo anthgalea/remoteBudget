@@ -6,15 +6,13 @@ class Currencies extends Component {
     constructor() {
         super();
         this.state = {
-          ratesObj: {},
-          baseSymbolVal: '',
-          targetSymbolVal: '',
           totalExpenses: 0,
           housing: 0,
           bills: 0,
           entertainment: 0,
           food: 0,
-          transport: 0
+          transport: 0,
+          convertedIncome: 0
         }
       this.handleChange = this.handleChange.bind(this);
     }
@@ -26,6 +24,15 @@ class Currencies extends Component {
     });
   }
 
+  calculateIncome = () => {
+    // result is the userIncome in the new currency.
+        let result = this.props.userIncome * this.props.targetRate;
+        console.log(result)
+        this.setState({
+          convertedIncome: result.toFixed(2)
+        })
+    }
+    
 
   calculateTotalExpenses = () => {
     // array to store all the string values from the state
@@ -36,6 +43,8 @@ class Currencies extends Component {
       this.state.transport,
       this.state.entertainment
     ]
+
+    let result = this.state.userIncome * this.state.targetRate;
 
     // converting to array of numbers to use later in the calculation
     let newExpensesArray = expensesArray.map(number => {
@@ -55,14 +64,18 @@ class Currencies extends Component {
     this.setState({
       totalExpenses: newTotal,
     }, () => {
-      this.sendData();
+      this.calculateIncome();
+
     })
 
   }
 
-  sendData = () => {
-    this.props.parentCallback(this.state.totalExpenses)
-  }
+
+
+
+  // sendData = () => {
+  //   this.props.parentCallback(this.state.totalExpenses)
+  // }
 
     render() {
         return (
@@ -103,6 +116,13 @@ class Currencies extends Component {
           </div>
 
         </div>
+
+        <div className="results">
+            <h2>Results</h2>
+      <p>You are making: ${this.state.convertedIncome} </p>
+            <p>You surplus/shortage is SUCH'NSUCH</p>
+        </div>
+
 
 			</div>
 		)

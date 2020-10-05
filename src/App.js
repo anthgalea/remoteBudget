@@ -52,6 +52,9 @@ class App extends Component {
     })
   }
 
+
+
+
   handleIncomeInputChange = (event) => {
     const incomeInput =  event.target.value 
     console.log(incomeInput)
@@ -113,6 +116,7 @@ class App extends Component {
     })
   }
 
+
   render() {
     return (
       <div className="App">
@@ -169,18 +173,12 @@ class App extends Component {
         <Currencies
         currentCurrencyCode={this.state.currentCurrencyCode}
         parentCallback={this.callbackFunction}
+        targetRate={this.state.targetRate}
+        userIncome={this.state.userIncome}
+        // calculateResults={this.calculateIncome}
         />
 
         <div className="results">
-          <Results
-            // build a conversion function
-            // calculate conversion of income and expenses
-            // take the income amount - total expenses and save it as a variable
-
-            userIncome={this.state.userIncome}
-            targetRate={this.state.targetRate}
-            // Expenses={}
-          />
         </div>
         
 
