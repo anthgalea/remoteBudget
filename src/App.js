@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import Currencies from './Currencies';
-import Expenses from './Expenses';
 import Results from './Results';
 
 class App extends Component {
@@ -130,7 +129,7 @@ class App extends Component {
           <h2 className="lineOne">First,</h2>
           <h2>Enter Your Current Income Status</h2>
 
-          <div>
+          <div className="incomeLabelInput">
             <label htmlFor="incomeAmount">Income Amount:</label>
             <input 
               type="text" id="incomeAmount" 

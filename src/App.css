@@ -103,11 +103,16 @@ label {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 10px auto;
+  margin: 15px auto;
   font-weight: 700;
   color: white;
 }
-
+.incomeLabelInput {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 h2 {
   margin: 0 0 15px;
   font-size: calc(1.8rem + 0.5rem);
@@ -185,9 +190,7 @@ h2.lineOne {
 }
 
 @media (max-width: 460px) {
-  .burgundy {
-    top: 150px;
-  }
+ 
   .expense {
     flex-direction: column;
     justify-content: space-between;
