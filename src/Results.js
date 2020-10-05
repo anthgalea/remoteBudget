@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 
-const Results = () => {
+const Results = (props) => {
+    let results = 0
+
+    // calculateIncome = () => {
+    //     let result = this.props.userIncome * this.props.targetRate;
+    //     console.log(result)
+    //     results = result
+    // }
+
     return (
         <div>
             <h2>Results</h2>

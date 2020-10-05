@@ -12,8 +12,9 @@ class App extends Component {
       countryNames: [],
       currentCurrencyCode: '',
       targetCurrencyCode: '',
-      userInputIncomeAmount: 0,
+      userIncome: 0,
       totalExpenses: 0,
+      targetRate: 0,
     }
   }
 
@@ -56,7 +57,7 @@ class App extends Component {
     console.log(incomeInput)
     // change income in state
     this.setState ({
-      userInputIncomeAmount: incomeInput
+      userIncome: incomeInput
     })
   } 
   
@@ -89,22 +90,21 @@ class App extends Component {
         }).then((res) => {
           console.log('here we are');
           console.log(res);
-          let conversionStart = this.state.targetCurrencyCode;
           // this gives us the target currency CODE
-          let conversion = res.data.rates[conversionStart];
-          console.log(conversion);
-          // let newRates = res.data.rates;
-          // console.log(newRates); 
-          // this.setState({
-          //   ratesObj: newRates,
-          // })
+          let conversionCode = this.state.targetCurrencyCode;
+          // this is the rate of conversion
+          let convertedRate = res.data.rates[conversionCode];
+          console.log(convertedRate)
+
+          this.setState({
+            targetRate: convertedRate,
+          })
         }).catch(error => {
           console.log('you suck');
           //alert
         })
       }
     })
-
   }
 
   callbackFunction = (childData) => {
@@ -112,11 +112,6 @@ class App extends Component {
       totalExpenses: childData,
     })
   }
-
-// after targetChange dropdown changes app.js state (is run), call exchange api and send both currencies into app.js state as well. then they can be passed into currencies.js and used in the math there if needed?
-//https://api.exchangeratesapi.io/latest?base=USD&symbols=CAD
-
-
 
   render() {
     return (
@@ -135,7 +130,7 @@ class App extends Component {
             <label htmlFor="incomeAmount">Income Amount:</label>
             <input 
               type="text" id="incomeAmount" 
-              value={this.state.userInputIncomeAmount}
+              value={this.state.userIncome}
               onChange={this.handleIncomeInputChange}
             />
           </div>
@@ -178,7 +173,12 @@ class App extends Component {
 
         <div className="results">
           <Results
-            // userInputIncomeAmount={}
+            // build a conversion function
+            // calculate conversion of income and expenses
+            // take the income amount - total expenses and save it as a variable
+
+            userIncome={this.state.userIncome}
+            targetRate={this.state.targetRate}
             // Expenses={}
           />
         </div>
