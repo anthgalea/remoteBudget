@@ -52,6 +52,7 @@ class App extends Component {
   handleIncomeInputChange = (event) => {
     const incomeInput =  event.target.value 
     console.log(incomeInput)
+    // change income in state
     this.setState ({
       userInputIncomeAmount: incomeInput
     })
@@ -59,8 +60,9 @@ class App extends Component {
   
 
   handleCurrentChange = (event) => {
+    // look at the value attribute on the dropdown option
     const userSelection = event.target.value;
-
+    // send it to state
     this.setState({
 			currentCurrencyCode: userSelection,
     })
@@ -69,24 +71,34 @@ class App extends Component {
 
 
   handleTargetChange = (event) => {
-    console.log(event.target);
+    // look at the value attribute on the dropdown option
     const targetSelection = event.target.value;
-
+    // send it to state
     this.setState({
-			targetCurrencyCode: targetSelection,
+      targetCurrencyCode: targetSelection,
+      // THEN (callback function), 
     }, () => {
-      if (this.state.targetCurrencyCode && this.state.currentCurrencyCode) {
+      // IF state on both has been set.
+      if (this.state.currentCurrencyCode) {
+        // >> run this axios call 
         axios({
+          // using custom endpoint built with pieces of state
           url: `https://api.exchangeratesapi.io/latest?base=${this.state.currentCurrencyCode}&symbols=${this.state.targetCurrencyCode}`,
         }).then((res) => {
           console.log('here we are');
+          console.log(res);
+          let conversionStart = this.state.targetCurrencyCode;
+          // this gives us the target currency CODE
+          let conversion = res.data.rates[conversionStart];
+          console.log(conversion);
           // let newRates = res.data.rates;
           // console.log(newRates); 
           // this.setState({
           //   ratesObj: newRates,
           // })
         }).catch(error => {
-          console.log(error.message);
+          console.log('you suck');
+          //alert
         })
       }
     })
