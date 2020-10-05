@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import Currencies from './Currencies';
-import Results from './Results';
 
 class App extends Component {
   constructor() {
@@ -154,7 +153,7 @@ class App extends Component {
 
         <section className="target wrapper">
           <h2 className="lineOne">Next,</h2>
-          <h2>Enter Your Projected Expenses in your New Destination:</h2>
+          <h2>Enter Your Projected Expenses in your New Destination</h2>
 
           <select onChange={this.handleTargetChange}>
             {this.state.countryNames.map((country, index) => {
@@ -176,10 +175,6 @@ class App extends Component {
         userIncome={this.state.userIncome}
         // calculateResults={this.calculateIncome}
         />
-
-        <div className="results">
-        </div>
-        
 
       </div>
     );

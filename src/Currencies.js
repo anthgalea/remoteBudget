@@ -117,12 +117,11 @@ class Currencies extends Component {
 
         </div>
 
-        <div className="results">
+        <div className="results wrapper">
             <h2>Results</h2>
-      <p>You are making: ${this.state.convertedIncome} </p>
-            <p>You surplus/shortage is SUCH'NSUCH</p>
+              <p>You are making: <span className="resultStyle">${this.state.convertedIncome}</span> in (country code or name?)</p>
+              <p>You surplus/shortage is <span className="resultStyle">SUCH'NSUCH</span> dynamic render</p>
         </div>
-
 
 			</div>
 		)
