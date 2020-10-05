@@ -36,7 +36,6 @@ class Currencies extends Component {
       this.state.transport,
       this.state.entertainment
     ]
-    // console.log('expensesArray:', expensesArray)
 
     // converting to array of numbers to use later in the calculation
     let newExpensesArray = expensesArray.map(number => {
@@ -65,19 +64,18 @@ class Currencies extends Component {
   // do same for target
   // multiply current by target
 
-    componentDidMount() {
-      // https://api.exchangeratesapi.io/latest?symbols=USD,GBP
-		axios({
-			url: `https://api.exchangeratesapi.io/latest`,
-		}).then((res) => {
-			let newRates = res.data.rates;
-			console.log(newRates); // object with {SYM: $$} objs
-			this.setState({
-				ratesObj: newRates,
-			})
-		})
-	}
-
+  // componentDidMount() {
+  //     https://api.exchangeratesapi.io/latest?symbols=USD,GBP
+	// 	axios({
+	// 		url: `https://api.exchangeratesapi.io/latest${this.props.currentSymbol},${this.props.targetSymbol}`,
+	// 	}).then((res) => {
+	// 		let newRates = res.data.rates;
+	// 		console.log(newRates); // object with {SYM: $$} objs
+	// 		this.setState({
+	// 			ratesObj: newRates,
+	// 		})
+	// 	})
+	// }
 
 	// for (let rate in rates) {
 	// 	if (rate == this.props.currentCurrencyCode) {
