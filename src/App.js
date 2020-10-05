@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import Currencies from './Currencies';
 import Expenses from './Expenses';
+import Results from './Results';
 
 class App extends Component {
   constructor() {
@@ -11,7 +12,8 @@ class App extends Component {
       countryNames: [],
       currentCurrencyCode: '',
       targetCurrencyCode: '',
-      userInputIncomeAmount: 0
+      userInputIncomeAmount: 0,
+      totalExpenses: 0,
     }
   }
 
@@ -105,6 +107,12 @@ class App extends Component {
 
   }
 
+  callbackFunction = (childData) => {
+    this.setState({
+      totalExpenses: childData,
+    })
+  }
+
 // after targetChange dropdown changes app.js state (is run), call exchange api and send both currencies into app.js state as well. then they can be passed into currencies.js and used in the math there if needed?
 //https://api.exchangeratesapi.io/latest?base=USD&symbols=CAD
 
@@ -163,9 +171,19 @@ class App extends Component {
 
         </section>
 
-        <Currencies currentCurrencyCode={this.state.currentCurrencyCode} />
-        <div className="results">Results go here okurrrt</div>
+        <Currencies
+        currentCurrencyCode={this.state.currentCurrencyCode}
+        parentCallback={this.callbackFunction}
+        />
+
+        <div className="results">
+          <Results
+            // userInputIncomeAmount={}
+            // Expenses={}
+          />
+        </div>
         
+
       </div>
     );
   };
