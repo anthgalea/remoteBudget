@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { app } from 'firebase';
 import Swal from "sweetalert2";
-// import ‘sweetalert2/dist/sweetalert2.min.css’;
 
 class Currencies extends Component {
   constructor() {
@@ -42,10 +41,7 @@ class Currencies extends Component {
 
   calculateSurplusShortage = () => {
     // get the annual expenses in the new currency
-    let annualExpenses = this.state.totalExpenses * 12
-    console.log('annualExpenses:', annualExpenses)
-
-    let newSurplusShortage = this.state.convertedIncome - annualExpenses
+    let newSurplusShortage = this.state.convertedIncome - this.state.totalExpenses
     console.log('newSurplusShortage:', newSurplusShortage)
 
     this.setState({

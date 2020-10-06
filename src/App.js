@@ -54,20 +54,18 @@ class App extends Component {
     })
   }
 
-
-
-
   handleIncomeInputChange = (event) => {
     const incomeInput = event.target.value
-    const errorMsg = 'Please enter a valid input (number with no spaces or punctuation)'
+    console.log(incomeInput)
+    // const errorMsg = 'Please enter a valid input (number with no spaces or punctuation)'
     
-    if (incomeInput !== ' ' && incomeInput !== '') {
+    // if (incomeInput !== ' ' && incomeInput !== '') {
       this.setState({
         userIncome: incomeInput
       })
-    } else {
-      
-    }
+  //   } else {
+
+  //   }
   }
 
 
@@ -141,17 +139,16 @@ class App extends Component {
 				<div className="userIncomeSection">
 					<div className="wrapper">
 						<h2 className="lineOne">First,</h2>
-						<h2>Enter Your Current Annual Income Status</h2>
+						<h2>Enter Your Current Monthly Income</h2>
 
 						<div className="incomeLabelInput">
 							<label htmlFor="incomeAmount">Income Amount:</label>
 							<input
-                type="number" 
-                pattern="[0-9]"
+                type="text"
 								id="incomeAmount"
 								value={this.state.userIncome}
 								onChange={this.handleIncomeInputChange}
-                required
+                // required
 							/>
 						</div>
 
