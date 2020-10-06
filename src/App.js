@@ -17,6 +17,7 @@ class App extends Component {
       userIncome: 0,
       totalExpenses: 0,
       targetRate: 0,
+      isIncomeValid: false
     }
   }
 
@@ -59,13 +60,15 @@ class App extends Component {
     console.log(incomeInput)
     // const errorMsg = 'Please enter a valid input (number with no spaces or punctuation)'
     
-    // if (incomeInput !== ' ' && incomeInput !== '') {
+    if (incomeInput !== ' ' && incomeInput !== '') {
       this.setState({
         userIncome: incomeInput
       })
-  //   } else {
-
-  //   }
+    } else {
+      this.setState({
+        isIncomeValid: !this.state.isIncomeValid
+      })
+    }
   }
 
 
@@ -150,8 +153,9 @@ class App extends Component {
 								onChange={this.handleIncomeInputChange}
                 // required
 							/>
+              {this.state.isIncomeValid ? <p>Please enter valid input.</p> : null }
 						</div>
-
+            
 						<div className="incomeDrop">
 							<select onChange={this.handleCurrentChange}>
 								{this.state.countryNames.map((country, index) => {
