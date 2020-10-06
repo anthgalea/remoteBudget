@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import Currencies from './Currencies';
+import Swal from "sweetalert2";
+import { fadeInDown, fadeOutUp } from 'animate.css';
+import { withFormsy } from 'formsy-react';
+
 
 class App extends Component {
   constructor() {
@@ -54,12 +58,16 @@ class App extends Component {
 
 
   handleIncomeInputChange = (event) => {
-    const incomeInput =  event.target.value
-    console.log(incomeInput)
-    // change income in state
-    this.setState ({
-      userIncome: incomeInput
-    })
+    const incomeInput = event.target.value
+    const errorMsg = 'Please enter a valid input (number with no spaces or punctuation)'
+    
+    if (incomeInput !== ' ' && incomeInput !== '') {
+      this.setState({
+        userIncome: incomeInput
+      })
+    } else {
+      
+    }
   }
 
 
@@ -101,7 +109,15 @@ class App extends Component {
             targetRate: convertedRate,
           })
         }).catch(error => {
-          console.log('you suck');
+          Swal.fire({
+            title: `Sorry, looks we don't have this currency in our database yet, but we're working on it.`,
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
           //alert
         })
       }
@@ -130,10 +146,12 @@ class App extends Component {
 						<div className="incomeLabelInput">
 							<label htmlFor="incomeAmount">Income Amount:</label>
 							<input
-								type="text"
+                type="number" 
+                pattern="[0-9]"
 								id="incomeAmount"
 								value={this.state.userIncome}
 								onChange={this.handleIncomeInputChange}
+                required
 							/>
 						</div>
 
