@@ -60,14 +60,23 @@ class App extends Component {
     console.log(incomeInput)
     // const errorMsg = 'Please enter a valid input (number with no spaces or punctuation)'
     
-    if (isNaN(incomeInput)|| !incomeInput) {
+    // if income input is not a number, set state to true, which displays error message
+    if (isNaN(incomeInput)) {
       this.setState({
-        isIncomeValid: !this.state.isIncomeValid
+        isIncomeValid: true
         
       })
+      // if income input is an empty string, still display error message
+    } else if (incomeInput === '') {
+      this.setState({
+        isIncomeValid: true,
+        userIncome: incomeInput
+      })
+      // otherwise, if user input is a number, remove error message
     } else {
       this.setState({
-        userIncome: incomeInput
+        userIncome: incomeInput,
+        isIncomeValid: false
       })
     }
   }
@@ -148,7 +157,7 @@ class App extends Component {
 						<div className="incomeLabelInput">
 							<label htmlFor="incomeAmount">Income Amount:</label>
 							<input
-                type="text"
+                type="number"
 								id="incomeAmount"
 								value={this.state.userIncome}
 								onChange={this.handleIncomeInputChange}
