@@ -32,7 +32,7 @@ class Currencies extends Component {
           convertedIncome: result.toFixed(2)
         })
     }
-    
+
 
   calculateTotalExpenses = () => {
     // array to store all the string values from the state
@@ -79,52 +79,93 @@ class Currencies extends Component {
 
     render() {
         return (
-			<div className="class">
+					<div>
+						<div className="expenses">
+							<div className="wrapper">
+								<div className="expense">
+									<label htmlFor="">Housing</label>
+									<input
+										name="housing"
+										type="text"
+										id="housing"
+										onChange={this.handleChange}
+										value={this.state.expensesArray}
+									/>
+								</div>
+								<div className="expense">
+									<label htmlFor="">Bills</label>
+									<input
+										name="bills"
+										type="text"
+										id="bills"
+										onChange={this.handleChange}
+										value={this.state.expensesArray}
+									/>
+								</div>
+								<div className="expense">
+									<label htmlFor="">Food</label>
+									<input
+										name="food"
+										type="text"
+										id="food"
+										onChange={this.handleChange}
+										value={this.state.expensesArray}
+									/>
+								</div>
+								<div className="expense">
+									<label htmlFor="">Transport</label>
+									<input
+										name="transport"
+										type="text"
+										id="transport"
+										onChange={this.handleChange}
+										value={this.state.expensesArray}
+									/>
+								</div>
+								<div className="expense">
+									<label htmlFor="">Entertainment</label>
+									<input
+										name="entertainment"
+										type="text"
+										id="entertainment"
+										onChange={this.handleChange}
+										value={this.state.expensesArray}
+									/>
+								</div>
 
-				{/* <p>{this.props.currentCurrencyCode}</p>
-				<p>{this.props.targetCurrencyCode}</p> */}
+								<div className="totalExpenses">
+									<button
+										className="calculateTotal"
+										onClick={this.calculateTotalExpenses}
+									>
+										Calculate Total
+									</button>
+									{/* use conditional statement to display */}
+									<p>Total: ${this.state.totalExpenses}</p>
+								</div>
+							</div>
+						</div>
 
-				<div className="expenses wrapper">
-          <div className="expense">
-              <label htmlFor="">Housing</label>
-              <input name="housing" type="text" id="housing" onChange={this.handleChange} value={this.state.expensesArray} />
-          </div>
-          <div className="expense">
-              <label htmlFor="">Bills</label>
-              <input name="bills" type="text" id="bills" onChange={this.handleChange} value={this.state.expensesArray} />
-          </div>
-          <div className="expense">
-              <label htmlFor="">Food</label>
-              <input name="food" type="text" id="food" onChange={this.handleChange} value={this.state.expensesArray} />
-          </div>
-          <div className="expense">
-              <label htmlFor="">Transport</label>
-              <input name="transport" type="text" id="transport" onChange={this.handleChange} value={this.state.expensesArray} />
-          </div>
-          <div className="expense">
-              <label htmlFor="">Entertainment</label>
-              <input name="entertainment"type="text" id="entertainment" onChange={this.handleChange} value={this.state.expensesArray} />
-          </div>
-
-
-          <div className="totalExpenses">
-            <button className="calculateTotal" onClick={this.calculateTotalExpenses}>
-            Calculate Total
-            </button>
-              {/* use conditional statement to display */}
-            <p>Total: ${this.state.totalExpenses}</p>
-          </div>
-
-        </div>
-
-        <div className="results wrapper">
-              <h2>Your <span className="lineOne">Future</span> Financial Status</h2>
-              <p>You are making: <span className="resultStyle">${this.state.convertedIncome}</span> in (country code or name?)</p>
-              <p>Your surplus/shortage is <span className="resultStyle">SUCH'NSUCH</span> dynamic render</p>
-        </div>
-
-			</div>
-		)
+						<div className="results">
+							<div className="wrapper">
+								<h2>
+									Your <span className="lineOne">Future</span> Financial Status
+								</h2>
+								<p>
+									You are making:{' '}
+									<span className="resultStyle">
+										${this.state.convertedIncome}
+									</span>{' '}
+									in (country code or name?)
+								</p>
+								<p>
+									Your surplus/shortage is{' '}
+									<span className="resultStyle">SUCH'NSUCH</span> dynamic render
+								</p>
+							</div>
+						</div>
+					</div>
+				)
     }
 }
 

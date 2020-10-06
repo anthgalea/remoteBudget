@@ -44,7 +44,7 @@ class App extends Component {
             currentCurrencyCode: currencyCode
 
           })
-          
+
         })
       })
     })
@@ -54,14 +54,14 @@ class App extends Component {
 
 
   handleIncomeInputChange = (event) => {
-    const incomeInput =  event.target.value 
+    const incomeInput =  event.target.value
     console.log(incomeInput)
     // change income in state
     this.setState ({
       userIncome: incomeInput
     })
-  } 
-  
+  }
+
 
   handleCurrentChange = (event) => {
     // look at the value attribute on the dropdown option
@@ -80,11 +80,11 @@ class App extends Component {
     // send it to state
     this.setState({
       targetCurrencyCode: targetSelection,
-      // THEN (callback function), 
+      // THEN (callback function),
     }, () => {
       // IF state on both has been set.
       if (this.state.currentCurrencyCode) {
-        // >> run this axios call 
+        // >> run this axios call
         axios({
           // using custom endpoint built with pieces of state
           url: `https://api.exchangeratesapi.io/latest?base=${this.state.currentCurrencyCode}&symbols=${this.state.targetCurrencyCode}`,
@@ -117,67 +117,66 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+			<div className="App">
+				<div className="burgundy"></div>
+				<div className="orange"></div>
 
-        <div className="burgundy"></div>
-        <div className="orange"></div>
-        
-        <h1>Remote Work Budget</h1>
-        <div className="userIncomeSection wrapper">
+				<h1>Remote Work Budget</h1>
+				<div className="userIncomeSection">
+					<div className="wrapper">
+						<h2 className="lineOne">First,</h2>
+						<h2>Enter Your Current Income Status</h2>
 
-          <h2 className="lineOne">First,</h2>
-          <h2>Enter Your Current Income Status</h2>
+						<div className="incomeLabelInput">
+							<label htmlFor="incomeAmount">Income Amount:</label>
+							<input
+								type="text"
+								id="incomeAmount"
+								value={this.state.userIncome}
+								onChange={this.handleIncomeInputChange}
+							/>
+						</div>
 
-          <div className="incomeLabelInput">
-            <label htmlFor="incomeAmount">Income Amount:</label>
-            <input 
-              type="text" id="incomeAmount" 
-              value={this.state.userIncome}
-              onChange={this.handleIncomeInputChange}
-            />
-          </div>
+						<div className="incomeDrop">
+							<select onChange={this.handleCurrentChange}>
+								{this.state.countryNames.map((country, index) => {
+									return (
+										<option value={country.currencyCode} key={index}>
+											{`${country.name} - ${country.currencyCode}`}
+										</option>
+									)
+								})}
+							</select>
+						</div>
+					</div>
+				</div>
 
-          <div className="incomeDrop">
-            <select onChange={this.handleCurrentChange}>
-              {this.state.countryNames.map((country, index) => {
-                return (
-                  <option value={country.currencyCode} key={index}>
-                    {`${country.name} - ${country.currencyCode}`}
-                  </option>
-                )
-                })
-              }
-            </select>
-          </div>
-        </div>
+				<section className="target">
+					<div className="wrapper">
+						<h2 className="lineOne">Next,</h2>
+						<h2>Enter Your Projected Expenses in your New Destination</h2>
 
-        <section className="target wrapper">
-          <h2 className="lineOne">Next,</h2>
-          <h2>Enter Your Projected Expenses in your New Destination</h2>
+						<select onChange={this.handleTargetChange}>
+							{this.state.countryNames.map((country, index) => {
+								return (
+									<option value={country.currencyCode} key={index}>
+										{`${country.name} - ${country.currencyCode}`}
+									</option>
+								)
+							})}
+						</select>
+					</div>
+				</section>
 
-          <select onChange={this.handleTargetChange}>
-            {this.state.countryNames.map((country, index) => {
-              return (
-                <option value={country.currencyCode} key={index}>
-                  {`${country.name} - ${country.currencyCode}`}
-                </option>
-              )
-              })
-            }
-          </select>
-
-        </section>
-
-        <Currencies
-        currentCurrencyCode={this.state.currentCurrencyCode}
-        parentCallback={this.callbackFunction}
-        targetRate={this.state.targetRate}
-        userIncome={this.state.userIncome}
-        // calculateResults={this.calculateIncome}
-        />
-
-      </div>
-    );
+				<Currencies
+					currentCurrencyCode={this.state.currentCurrencyCode}
+					parentCallback={this.callbackFunction}
+					targetRate={this.state.targetRate}
+					userIncome={this.state.userIncome}
+					// calculateResults={this.calculateIncome}
+				/>
+			</div>
+		)
   };
 }
 
