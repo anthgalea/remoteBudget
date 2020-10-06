@@ -60,13 +60,14 @@ class App extends Component {
     console.log(incomeInput)
     // const errorMsg = 'Please enter a valid input (number with no spaces or punctuation)'
     
-    if (incomeInput !== ' ' && incomeInput !== '') {
+    if (isNaN(incomeInput)|| !incomeInput) {
       this.setState({
-        userIncome: incomeInput
+        isIncomeValid: !this.state.isIncomeValid
+        
       })
     } else {
       this.setState({
-        isIncomeValid: !this.state.isIncomeValid
+        userIncome: incomeInput
       })
     }
   }
@@ -153,7 +154,7 @@ class App extends Component {
 								onChange={this.handleIncomeInputChange}
                 // required
 							/>
-              {this.state.isIncomeValid ? <p>Please enter valid input.</p> : null }
+              {this.state.isIncomeValid ? <p>Please enter a number value.</p> : null }
 						</div>
             
 						<div className="incomeDrop">
