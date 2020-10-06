@@ -31,6 +31,9 @@ class Currencies extends Component {
     console.log(result)
     this.setState({
       convertedIncome: result.toFixed(2)
+    }, () => {
+      // call the surplus shortage function only when the convertedIncome is updated
+      this.calculateSurplusShortage()
     })
   }
 
