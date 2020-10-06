@@ -125,7 +125,7 @@ class App extends Component {
 				<div className="userIncomeSection">
 					<div className="wrapper">
 						<h2 className="lineOne">First,</h2>
-						<h2>Enter Your Current Income Status</h2>
+						<h2>Enter Your Current Annual Income Status</h2>
 
 						<div className="incomeLabelInput">
 							<label htmlFor="incomeAmount">Income Amount:</label>
@@ -154,7 +154,7 @@ class App extends Component {
 				<section className="target">
 					<div className="wrapper">
 						<h2 className="lineOne">Next,</h2>
-						<h2>Enter Your Projected Expenses in your New Destination</h2>
+						<h2>Enter Your Projected Monthly Budget in your New Destination</h2>
 
 						<select onChange={this.handleTargetChange}>
 							{this.state.countryNames.map((country, index) => {
@@ -172,7 +172,7 @@ class App extends Component {
 					currentCurrencyCode={this.state.currentCurrencyCode}
 					parentCallback={this.callbackFunction}
 					targetRate={this.state.targetRate}
-					userIncome={this.state.userIncome}
+          userIncome={this.state.userIncome}
 					// calculateResults={this.calculateIncome}
 				/>
 			</div>

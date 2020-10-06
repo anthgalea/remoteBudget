@@ -3,19 +3,20 @@ import axios from 'axios';
 import { app } from 'firebase';
 
 class Currencies extends Component {
-    constructor() {
-        super();
-        this.state = {
-          totalExpenses: 0,
-          housing: 0,
-          bills: 0,
-          entertainment: 0,
-          food: 0,
-          transport: 0,
-          convertedIncome: 0
-        }
-      this.handleChange = this.handleChange.bind(this);
+  constructor() {
+    super();
+    this.state = {
+      housing: 0,
+      bills: 0,
+      entertainment: 0,
+      food: 0,
+      transport: 0,
+      convertedIncome: 0,
+      convertedExpenses: 0,
+      surplusShortage: 0
     }
+    this.handleChange = this.handleChange.bind(this);
+  }
 
   handleChange = (evt) => {
     // and use it to target the key on our `state` object with the same name, using bracket syntax
@@ -26,12 +27,26 @@ class Currencies extends Component {
 
   calculateIncome = () => {
     // result is the userIncome in the new currency.
-        let result = this.props.userIncome * this.props.targetRate;
-        console.log(result)
-        this.setState({
-          convertedIncome: result.toFixed(2)
-        })
-    }
+    let result = this.props.userIncome * this.props.targetRate;
+    console.log(result)
+    this.setState({
+      convertedIncome: result.toFixed(2)
+    })
+  }
+
+
+  calculateSurplusShortage = () => {
+    // get the annual expenses in the new currency
+    let annualExpenses = this.state.convertedExpenses * 12
+    console.log('annualExpenses:', annualExpenses)
+
+    let newSurplusShortage = this.state.convertedIncome - annualExpenses
+    console.log('newSurplusShortage:', newSurplusShortage)
+
+    this.setState({
+      surplusShortage: newSurplusShortage
+    })
+  }
 
 
   calculateTotalExpenses = () => {
@@ -44,7 +59,7 @@ class Currencies extends Component {
       this.state.entertainment
     ]
 
-    let result = this.state.userIncome * this.state.targetRate;
+
 
     // converting to array of numbers to use later in the calculation
     let newExpensesArray = expensesArray.map(number => {
@@ -59,113 +74,111 @@ class Currencies extends Component {
 
     // takes the number array and uses the reducer to calculate the total
     let newTotal = newExpensesArray.reduce(reducer);
-    console.log('newTotal:', newTotal)
+
+    // convert the expenses to the target currency
+    let newConvertedExpenses = newTotal * this.props.targetRate
+    console.log('newTotal:', newConvertedExpenses)
 
     this.setState({
-      totalExpenses: newTotal,
+      convertedExpenses: newConvertedExpenses.toFixed(2),
     }, () => {
-      this.calculateIncome();
-
+      this.calculateIncome()
+      // .then(() => this.calculateSurplusShortage());
     })
 
   }
 
 
 
-
-  // sendData = () => {
-  //   this.props.parentCallback(this.state.totalExpenses)
-  // }
-
     render() {
-        return (
-					<div>
-						<div className="expenses">
-							<div className="wrapper">
-								<div className="expense">
-									<label htmlFor="">Housing</label>
-									<input
-										name="housing"
-										type="text"
-										id="housing"
-										onChange={this.handleChange}
-										value={this.state.expensesArray}
-									/>
-								</div>
-								<div className="expense">
-									<label htmlFor="">Bills</label>
-									<input
-										name="bills"
-										type="text"
-										id="bills"
-										onChange={this.handleChange}
-										value={this.state.expensesArray}
-									/>
-								</div>
-								<div className="expense">
-									<label htmlFor="">Food</label>
-									<input
-										name="food"
-										type="text"
-										id="food"
-										onChange={this.handleChange}
-										value={this.state.expensesArray}
-									/>
-								</div>
-								<div className="expense">
-									<label htmlFor="">Transport</label>
-									<input
-										name="transport"
-										type="text"
-										id="transport"
-										onChange={this.handleChange}
-										value={this.state.expensesArray}
-									/>
-								</div>
-								<div className="expense">
-									<label htmlFor="">Entertainment</label>
-									<input
-										name="entertainment"
-										type="text"
-										id="entertainment"
-										onChange={this.handleChange}
-										value={this.state.expensesArray}
-									/>
-								</div>
+      return (
+        <div>
+          <div className="expenses">
+            <div className="wrapper">
+              <div className="expense">
+                <label htmlFor="">Housing</label>
+                <input
+                  name="housing"
+                  type="text"
+                  id="housing"
+                  onChange={this.handleChange}
+                  value={this.state.expensesArray}
+                />
+              </div>
+              <div className="expense">
+                <label htmlFor="">Bills</label>
+                <input
+                  name="bills"
+                  type="text"
+                  id="bills"
+                  onChange={this.handleChange}
+                  value={this.state.expensesArray}
+                />
+              </div>
+              <div className="expense">
+                <label htmlFor="">Food</label>
+                <input
+                  name="food"
+                  type="text"
+                  id="food"
+                  onChange={this.handleChange}
+                  value={this.state.expensesArray}
+                />
+              </div>
+              <div className="expense">
+                <label htmlFor="">Transport</label>
+                <input
+                  name="transport"
+                  type="text"
+                  id="transport"
+                  onChange={this.handleChange}
+                  value={this.state.expensesArray}
+                />
+              </div>
+              <div className="expense">
+                <label htmlFor="">Entertainment</label>
+                <input
+                  name="entertainment"
+                  type="text"
+                  id="entertainment"
+                  onChange={this.handleChange}
+                  value={this.state.expensesArray}
+                />
+              </div>
 
-								<div className="totalExpenses">
-									<button
-										className="calculateTotal"
-										onClick={this.calculateTotalExpenses}
-									>
-										Calculate Total
-									</button>
-									{/* use conditional statement to display */}
-									<p>Total: ${this.state.totalExpenses}</p>
-								</div>
-							</div>
-						</div>
+              <div className="totalExpenses">
+                <button
+                  className="calculateTotal"
+                  onClick={this.calculateTotalExpenses}
+                >
+                  Calculate Total
+                </button>
+                {/* use conditional statement to display */}
+                <p>Total: ${this.state.totalExpenses}</p>
+              </div>
+            </div>
+          </div>
 
-						<div className="results">
-							<div className="wrapper">
-								<h2>
-									Your <span className="lineOne">Future</span> Financial Status
-								</h2>
-								<p>
-									You are making:{' '}
-									<span className="resultStyle">
-										${this.state.convertedIncome}
-									</span>{' '}
-									in (country code or name?)
-								</p>
-								<p>
-									Your surplus/shortage is{' '}
-									<span className="resultStyle">SUCH'NSUCH</span> dynamic render
-								</p>
-							</div>
-						</div>
-					</div>
-				)
+          <div className="results">
+            <div className="wrapper">
+              <h2>
+                Your <span className="lineOne">Future</span> Financial Status
+              </h2>
+              <p>
+                You are making:
+                <span className="resultStyle">
+                  ${this.state.convertedIncome}
+                </span>
+                in (country code or name?)
+              </p>
+              <p>
+                Your surplus/shortage is:
+                <span className="resultStyle">${this.state.surplusShortage}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      )
     }
 }
 
