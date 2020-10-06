@@ -12,7 +12,7 @@ class Currencies extends Component {
       food: 0,
       transport: 0,
       convertedIncome: 0,
-      convertedExpenses: 0,
+      totalExpenses: 0,
       surplusShortage: 0
     }
     this.handleChange = this.handleChange.bind(this);
@@ -40,14 +40,14 @@ class Currencies extends Component {
 
   calculateSurplusShortage = () => {
     // get the annual expenses in the new currency
-    let annualExpenses = this.state.convertedExpenses * 12
+    let annualExpenses = this.state.totalExpenses * 12
     console.log('annualExpenses:', annualExpenses)
 
     let newSurplusShortage = this.state.convertedIncome - annualExpenses
     console.log('newSurplusShortage:', newSurplusShortage)
 
     this.setState({
-      surplusShortage: newSurplusShortage
+      surplusShortage: newSurplusShortage.toFixed(2)
     })
   }
 
@@ -75,18 +75,14 @@ class Currencies extends Component {
     // building the calculation
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
-    // takes the number array and uses the reducer to calculate the total
+    // takes the number array and uses the reducer to calculate the total sum of expenses
     let newTotal = newExpensesArray.reduce(reducer);
 
-    // convert the expenses to the target currency
-    let newConvertedExpenses = newTotal * this.props.targetRate
-    console.log('newTotal:', newConvertedExpenses)
 
     this.setState({
-      convertedExpenses: newConvertedExpenses.toFixed(2),
+      totalExpenses: newTotal.toFixed(2),
     }, () => {
       this.calculateIncome()
-      // .then(() => this.calculateSurplusShortage());
     })
 
   }
