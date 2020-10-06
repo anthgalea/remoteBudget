@@ -202,6 +202,7 @@ class App extends Component {
 					parentCallback={this.callbackFunction}
 					targetRate={this.state.targetRate}
           userIncome={this.state.userIncome}
+          targetCurrencyCode={this.state.targetCurrencyCode}
 					// calculateResults={this.calculateIncome}
 				/>
 			</div>

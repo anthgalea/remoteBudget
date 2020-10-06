@@ -162,15 +162,18 @@ class Currencies extends Component {
                 Your <span className="lineOne">Future</span> Financial Status
               </h2>
               <p>
-                You are making:
+                You are making: <br />
                 <span className="resultStyle">
                   ${this.state.convertedIncome}
-                </span>
-                in (country code or name?)
+				</span>
+				{this.props.targetCurrencyCode}	
               </p>
               <p>
-                Your surplus/shortage is:
-                <span className="resultStyle">${this.state.surplusShortage}</span>
+				Your surplus/shortage is: <br />
+                <span className="resultStyle">
+					${this.state.surplusShortage}
+				</span>
+				{this.props.targetCurrencyCode}
               </p>
             </div>
           </div>
