@@ -93,7 +93,6 @@ class Currencies extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
 			<div>
 				<div className="expenses">
 					<div className="wrapper">
@@ -155,13 +154,13 @@ class Currencies extends Component {
 								Calculate Total
 							</button>
 							{/* use conditional statement to display */}
-							<p>Total: ${this.state.totalExpenses}</p>
+						<p className="totalExpensesParagraph">Total: ${this.state.totalExpenses}</p>
 						</div>
 					</div>
 				</div>
 				<div className="results">
 					<div className="wrapper">
-						<h2>
+						<h2 className="financialStatus">
 							Your <span className="lineOne">Future</span> Financial Status
 						</h2>
 						<p>
@@ -196,106 +195,6 @@ class Currencies extends Component {
 				</div>
 			</div>
 		)
-=======
-      <div>
-        <div className="expenses">
-          <div className="wrapper">
-            <div className="expense">
-              <label htmlFor="">Housing</label>
-              <input
-                name="housing"
-                type="text"
-                id="housing"
-                onChange={this.handleChange}
-                value={this.state.expensesArray}
-              />
-            </div>
-            <div className="expense">
-              <label htmlFor="">Bills</label>
-              <input
-                name="bills"
-                type="text"
-                id="bills"
-                onChange={this.handleChange}
-                value={this.state.expensesArray}
-              />
-            </div>
-            <div className="expense">
-              <label htmlFor="">Food</label>
-              <input
-                name="food"
-                type="text"
-                id="food"
-                onChange={this.handleChange}
-                value={this.state.expensesArray}
-              />
-            </div>
-            <div className="expense">
-              <label htmlFor="">Transport</label>
-              <input
-                name="transport"
-                type="text"
-                id="transport"
-                onChange={this.handleChange}
-                value={this.state.expensesArray}
-              />
-            </div>
-            <div className="expense">
-              <label htmlFor="">Entertainment</label>
-              <input
-                name="entertainment"
-                type="text"
-                id="entertainment"
-                onChange={this.handleChange}
-                value={this.state.expensesArray}
-              />
-            </div>
-            <div className="totalExpenses">
-              <button
-                className="calculateTotal"
-                onClick={this.calculateTotalExpenses}
-              >
-                Calculate Total
-								</button>
-              {/* use conditional statement to display */}
-              <p className="totalExpensesParagraph">Total: ${this.state.totalExpenses}</p>
-            </div>
-          </div>
-        </div>
-        <div className="results">
-          <div className="wrapper">
-            <h2 className="financialStatus">
-              Your <span className="lineOne">Future</span> Financial Status
-							</h2>
-            <p>
-              You are making: <br />
-              <span className="resultStyle">
-                ${this.state.convertedIncome}
-              </span>
-              {this.props.targetCurrencyCode}
-            </p>
-            {this.state.surplusShortage > 0 ? (
-              <p>
-                Your surplus is: <br />
-                <span className="resultStyle">
-                  ${this.state.surplusShortage}
-                </span>
-                {this.props.targetCurrencyCode}
-              </p>
-            ) : (
-                <p>
-                  Your shortage is: <br />
-                  <span className="resultStyle">
-                    ${this.state.surplusShortage}
-                  </span>
-                  {this.props.targetCurrencyCode}
-                </p>
-              )}
-          </div>
-        </div>
-      </div>
-    )
->>>>>>> responsive
   }
 }
 export default Currencies;
