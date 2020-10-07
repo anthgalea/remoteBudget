@@ -77,14 +77,16 @@ class App extends Component {
 		}
 	}
 
-  
+
 	handleCurrentChange = (event) => {
 		// look at the value attribute on the dropdown option
 		const userSelection = event.target.value
 		// send it to state
 		this.setState({
 			currentCurrencyCode: userSelection,
-		})
+		}, () => {
+      this.getCurrencies()
+    })
 	}
 
 
@@ -94,7 +96,9 @@ class App extends Component {
 		// send it to state
 		this.setState({
 			targetCurrencyCode: targetSelection,
-		})
+		}, () => {
+      this.getCurrencies()
+    })
   }
 
 
@@ -105,16 +109,14 @@ class App extends Component {
 			url: `https://api.exchangeratesapi.io/latest?base=${this.state.currentCurrencyCode}&symbols=${this.state.targetCurrencyCode}`,
 		})
     .then((res) => {
-      console.log('here we are')
-      console.log(res)
       // this gives us the target currency CODE
       let conversionCode = this.state.targetCurrencyCode
       // this is the rate of conversion
       let convertedRate = res.data.rates[conversionCode]
-      console.log(convertedRate)
 
       this.setState({
         targetRate: convertedRate,
+        // currentRate:
       })
     })
     .catch((error) => {
