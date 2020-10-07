@@ -146,7 +146,6 @@ class App extends Component {
 				<h1>Remote Work Budget</h1>
 				<div className="userIncomeSection">
 					<div className="wrapper">
-						<h2 className="lineOne">First,</h2>
 						<h2>Enter Your Current Monthly Income</h2>
 
 						<div className="incomeLabelInput">
@@ -164,7 +163,7 @@ class App extends Component {
 						</div>
 
 						<div className="incomeDrop">
-							<select onChange={this.handleCurrentChange}>
+							<select className="incomeDropdown" onChange={this.handleCurrentChange}>
 								{this.state.countryNames.map((country, index) => {
 									return (
 										<option value={country.currencyCode} key={index}>
@@ -179,10 +178,9 @@ class App extends Component {
 
 				<section className="target">
 					<div className="wrapper">
-						<h2 className="lineOne">Next,</h2>
-						<h2>Enter Your Projected Monthly Budget in your New Destination</h2>
+						<h2>Enter Your Projected Monthly Budget in Your New Destination</h2>
 
-						<select onChange={this.handleTargetChange}>
+						<select className="budgetDropdown" onChange={this.handleTargetChange}>
 							{this.state.countryNames.map((country, index) => {
 								return (
 									<option value={country.currencyCode} key={index}>
