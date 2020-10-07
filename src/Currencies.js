@@ -149,7 +149,9 @@ class Currencies extends Component {
 						</h2>
 						<p>
 							You are making: <br />
-							<span className="resultStyle">${this.state.convertedIncome}</span>
+							<span className="resultStyle">
+								${new Intl.NumberFormat().format(this.state.convertedIncome)}
+							</span>
 							&nbsp;
 							{this.props.targetCurrencyCode}
 						</p>
@@ -158,7 +160,7 @@ class Currencies extends Component {
 							<p>
 								Your surplus is: <br />
 								<span className="resultStyle">
-									${this.state.surplusShortage}
+									${new Intl.NumberFormat().format(this.state.surplusShortage)}
 								</span>
 								&nbsp;
 								{this.props.targetCurrencyCode}
@@ -167,7 +169,7 @@ class Currencies extends Component {
 							<p>
 								Your shortage is: <br />
 								<span className="resultStyle">
-									${this.state.surplusShortage}
+									${new Intl.NumberFormat().format(this.state.surplusShortage)}
 								</span>
 								&nbsp;
 								{this.props.targetCurrencyCode}
