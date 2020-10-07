@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { app } from 'firebase';
 import Swal from "sweetalert2";
-
 class Currencies extends Component {
   constructor() {
     super();
@@ -18,14 +17,12 @@ class Currencies extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
   }
-
   handleChange = (evt) => {
     // and use it to target the key on our `state` object with the same name, using bracket syntax
     this.setState({
       [evt.target.name]: evt.target.value
     });
   }
-
   calculateIncome = () => {
     // result is the userIncome in the new currency.
     let result = this.props.userIncome * this.props.targetRate;
@@ -37,17 +34,15 @@ class Currencies extends Component {
       this.calculateSurplusShortage()
     })
   }
-
-
   calculateSurplusShortage = () => {
     // get the annual expenses in the new currency
     let newSurplusShortage = this.state.convertedIncome - this.state.totalExpenses
     console.log('newSurplusShortage:', newSurplusShortage)
-
     this.setState({
       surplusShortage: newSurplusShortage.toFixed(2)
     })
   }
+
 
 
   calculateTotalExpenses = () => {
@@ -59,127 +54,125 @@ class Currencies extends Component {
       this.state.transport,
       this.state.entertainment
     ]
-
-
-
     // converting to array of numbers to use later in the calculation
     let newExpensesArray = expensesArray.map(number => {
       console.log(number)
       return parseFloat(number)
     })
-
     console.log('numArray:', newExpensesArray)
-
     // building the calculation
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
-
     // takes the number array and uses the reducer to calculate the total sum of expenses
     let newTotal = newExpensesArray.reduce(reducer);
-
-
     this.setState({
       totalExpenses: newTotal.toFixed(2),
     }, () => {
       this.calculateIncome()
     })
-
   }
 
 
 
-    render() {
-      return (
-        <div>
-          <div className="expenses">
-            <div className="wrapper">
-              <div className="expense">
-                <label htmlFor="">Housing</label>
-                <input
-                  name="housing"
-                  type="text"
-                  id="housing"
-                  onChange={this.handleChange}
-                  value={this.state.expensesArray}
-                />
-              </div>
-              <div className="expense">
-                <label htmlFor="">Bills</label>
-                <input
-                  name="bills"
-                  type="text"
-                  id="bills"
-                  onChange={this.handleChange}
-                  value={this.state.expensesArray}
-                />
-              </div>
-              <div className="expense">
-                <label htmlFor="">Food</label>
-                <input
-                  name="food"
-                  type="text"
-                  id="food"
-                  onChange={this.handleChange}
-                  value={this.state.expensesArray}
-                />
-              </div>
-              <div className="expense">
-                <label htmlFor="">Transport</label>
-                <input
-                  name="transport"
-                  type="text"
-                  id="transport"
-                  onChange={this.handleChange}
-                  value={this.state.expensesArray}
-                />
-              </div>
-              <div className="expense">
-                <label htmlFor="">Entertainment</label>
-                <input
-                  name="entertainment"
-                  type="text"
-                  id="entertainment"
-                  onChange={this.handleChange}
-                  value={this.state.expensesArray}
-                />
-              </div>
-
-              <div className="totalExpenses">
-                <button
-                  className="calculateTotal"
-                  onClick={this.calculateTotalExpenses}
-                >
-                  Calculate Total
-                </button>
-                {/* use conditional statement to display */}
-                <p>Total: ${this.state.totalExpenses}</p>
-              </div>
+  render() {
+    return (
+      <div>
+        <div className="expenses">
+          <div className="wrapper">
+            <div className="expense">
+              <label htmlFor="">Housing</label>
+              <input
+                name="housing"
+                type="text"
+                id="housing"
+                onChange={this.handleChange}
+                value={this.state.expensesArray}
+              />
             </div>
-          </div>
-
-          <div className="results">
-            <div className="wrapper">
-              <h2>
-                Your <span className="lineOne">Future</span> Financial Status
-              </h2>
-              <p>
-                You are making: <br />
-                <span className="resultStyle">
-                  ${this.state.convertedIncome}
-				</span>
-				{this.props.targetCurrencyCode}	
-              </p>
-              <p>
-				Your surplus/shortage is: <br />
-                <span className="resultStyle">
-					${this.state.surplusShortage}
-				</span>
-				{this.props.targetCurrencyCode}
-              </p>
+            <div className="expense">
+              <label htmlFor="">Bills</label>
+              <input
+                name="bills"
+                type="text"
+                id="bills"
+                onChange={this.handleChange}
+                value={this.state.expensesArray}
+              />
+            </div>
+            <div className="expense">
+              <label htmlFor="">Food</label>
+              <input
+                name="food"
+                type="text"
+                id="food"
+                onChange={this.handleChange}
+                value={this.state.expensesArray}
+              />
+            </div>
+            <div className="expense">
+              <label htmlFor="">Transport</label>
+              <input
+                name="transport"
+                type="text"
+                id="transport"
+                onChange={this.handleChange}
+                value={this.state.expensesArray}
+              />
+            </div>
+            <div className="expense">
+              <label htmlFor="">Entertainment</label>
+              <input
+                name="entertainment"
+                type="text"
+                id="entertainment"
+                onChange={this.handleChange}
+                value={this.state.expensesArray}
+              />
+            </div>
+            <div className="totalExpenses">
+              <button
+                className="calculateTotal"
+                onClick={this.calculateTotalExpenses}
+              >
+                Calculate Total
+								</button>
+              {/* use conditional statement to display */}
+              <p>Total: ${this.state.totalExpenses}</p>
             </div>
           </div>
         </div>
-      )
-    }
+        <div className="results">
+          <div className="wrapper">
+            <h2>
+              Your <span className="lineOne">Future</span> Financial Status
+							</h2>
+            <p>
+              You are making: <br />
+              <span className="resultStyle">
+                ${this.state.convertedIncome}
+              </span>
+              {this.props.targetCurrencyCode}
+            </p>
+            {this.state.surplusShortage > 0 ? (
+              <p>
+                Your surplus is: <br />
+                <span className="resultStyle">
+                  ${this.state.surplusShortage}
+                </span>
+                {this.props.targetCurrencyCode}
+              </p>
+            ) : (
+                <p>
+                  Your shortage is: <br />
+                  <span className="resultStyle">
+                    ${this.state.surplusShortage}
+                  </span>
+                  {this.props.targetCurrencyCode}
+                </p>
+              )}
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
-
 export default Currencies;

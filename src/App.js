@@ -121,7 +121,7 @@ class App extends Component {
           })
         }).catch(error => {
           Swal.fire({
-            title: `Sorry, looks we don't have this currency in our database yet, but we're working on it.`,
+            title: `Sorry, looks we don't have one of your currencies in our database yet, but we're working on it.`,
             showClass: {
               popup: 'animate__animated animate__fadeInDown'
             },
@@ -129,7 +129,6 @@ class App extends Component {
               popup: 'animate__animated animate__fadeOutUp'
             }
           })
-          //alert
         })
       }
     })
@@ -163,7 +162,7 @@ class App extends Component {
 								onChange={this.handleIncomeInputChange}
                 // required
 							/>
-              {this.state.isIncomeValid ? <p>Please enter a number value.</p> : null }
+              {this.state.isIncomeValid ? <p className="errorMessage">Please enter a number value.</p> : null }
 						</div>
             
 						<div className="incomeDrop">
@@ -203,7 +202,6 @@ class App extends Component {
 					targetRate={this.state.targetRate}
           userIncome={this.state.userIncome}
           targetCurrencyCode={this.state.targetCurrencyCode}
-					// calculateResults={this.calculateIncome}
 				/>
 			</div>
 		)
