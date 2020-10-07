@@ -19,15 +19,18 @@ class Currencies extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
   }
+
   handleChange = (evt) => {
     // and use it to target the key on our `state` object with the same name, using bracket syntax
     this.setState({
       [evt.target.name]: evt.target.value
     });
   }
+
   calculateIncome = () => {
     // result is the userIncome in the new currency.
     let result = this.props.userIncome * this.props.targetRate;
+    console.log('targetRate: ',this.props.targetRate)
     console.log(result)
     this.setState({
       convertedIncome: result.toFixed(2)
@@ -36,8 +39,10 @@ class Currencies extends Component {
       this.calculateSurplusShortage()
     })
   }
+
   calculateSurplusShortage = () => {
     // get the annual expenses in the new currency
+    console.log('convertedIncome:', this.state.convertedIncome, 'totalExpenses: ', this.state.totalExpenses)
     let newSurplusShortage = this.state.convertedIncome - this.state.totalExpenses
     console.log('newSurplusShortage:', newSurplusShortage)
     this.setState({
@@ -61,16 +66,32 @@ class Currencies extends Component {
       console.log(number)
       return parseFloat(number)
     })
+
     console.log('numArray:', newExpensesArray)
     // building the calculation
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
     // takes the number array and uses the reducer to calculate the total sum of expenses
     let newTotal = newExpensesArray.reduce(reducer);
-    this.setState({
-      totalExpenses: newTotal.toFixed(2),
-    }, () => {
-      this.calculateIncome()
-    })
+    if (this.props.targetRate) {
+      this.setState(
+        {
+          totalExpenses: newTotal.toFixed(2),
+        },
+        () => {
+          this.calculateIncome()
+        }
+      )
+    } else {
+       Swal.fire({
+					title: `Please select target currency.`,
+					showClass: {
+						popup: 'animate__animated animate__fadeInDown',
+					},
+					hideClass: {
+						popup: 'animate__animated animate__fadeOutUp',
+					},
+				})
+    }
   }
 
 
