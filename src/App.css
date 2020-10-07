@@ -108,7 +108,11 @@ label {
   font-size: calc(1.2rem + 0.7vw);
   padding: 0 10px;
 }
-
+p.errorMessage {
+  padding: 0;
+  margin: 0 5px;
+  font-size: calc(1rem + 0.5vw);
+}
 .userIncomeSection {
   display: flex;
   flex-direction: column;
@@ -194,6 +198,7 @@ h2 {
   border: 1px black dotted;
   width: 100%;
   padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .resultStyle {
@@ -214,7 +219,7 @@ h2 {
 /* Landscape phones and down */
 @media only screen and 
 (max-width: 650px) and 
-(min-width: 460px) {
+(min-width: 480px) {
   .expense {
     width: 95%;
   }
@@ -224,7 +229,7 @@ h2 {
 }
 
 @media only screen and 
-(max-width: 460px) and 
+(max-width: 480px) and 
 (min-width: 320px) {
 
   .monthlyBudgetTitle {
