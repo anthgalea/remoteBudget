@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { app } from 'firebase';
+
+// Import Packages
 import Swal from "sweetalert2";
 
 
@@ -30,8 +30,7 @@ class Currencies extends Component {
   calculateIncome = () => {
     // result is the userIncome in the new currency.
     let result = this.props.userIncome * this.props.targetRate;
-    console.log('targetRate: ',this.props.targetRate)
-    console.log(result)
+
     this.setState({
       convertedIncome: result.toFixed(2)
     }, () => {
@@ -42,9 +41,7 @@ class Currencies extends Component {
 
   calculateSurplusShortage = () => {
     // get the annual expenses in the new currency
-    console.log('convertedIncome:', this.state.convertedIncome, 'totalExpenses: ', this.state.totalExpenses)
     let newSurplusShortage = this.state.convertedIncome - this.state.totalExpenses
-    console.log('newSurplusShortage:', newSurplusShortage)
     this.setState({
       surplusShortage: newSurplusShortage.toFixed(2)
     })
@@ -63,11 +60,10 @@ class Currencies extends Component {
     ]
     // converting to array of numbers to use later in the calculation
     let newExpensesArray = expensesArray.map(number => {
-      console.log(number)
       return parseFloat(number)
     })
 
-    console.log('numArray:', newExpensesArray)
+
     // building the calculation
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
     // takes the number array and uses the reducer to calculate the total sum of expenses
@@ -83,7 +79,7 @@ class Currencies extends Component {
       )
     } else {
        Swal.fire({
-					title: `Please select target currency.`,
+					text: `Please select target currency.`,
 					showClass: {
 						popup: 'animate__animated animate__fadeInDown',
 					},
@@ -93,7 +89,6 @@ class Currencies extends Component {
 				})
     }
   }
-
 
 
   render() {

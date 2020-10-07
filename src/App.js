@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
+
+// Import Packages
 import axios from 'axios';
+import Swal from 'sweetalert2'
+import { fadeInDown, fadeOutUp } from 'animate.css'
+
+// import Components
 import Currencies from './Currencies';
-import Swal from "sweetalert2";
-import { fadeInDown, fadeOutUp } from 'animate.css';
-import { withFormsy } from 'formsy-react';
+
 
 
 class App extends Component {
@@ -15,7 +19,6 @@ class App extends Component {
 			currentCurrencyCode: '',
 			targetCurrencyCode: '',
 			userIncome: 0,
-			totalExpenses: 0,
 			targetRate: 0,
 			isIncomeValid: false,
 		}
@@ -41,7 +44,7 @@ class App extends Component {
 					let currencyCode = currency.code
 
 					newCountries.push({ name: name, currencyCode: currencyCode })
-					// console.log(currencyCode);
+
 
 					this.setState({
 						countryNames: newCountries,
@@ -54,10 +57,9 @@ class App extends Component {
 
 	handleIncomeInputChange = (event) => {
 		const incomeInput = event.target.value
-		console.log(incomeInput)
-		// const errorMsg = 'Please enter a valid input (number with no spaces or punctuation)'
 
-		// if income input is not a number, set state to true, which displays error message
+    // if income input is not a number, set state to true,
+    // which displays error message
 		if (isNaN(incomeInput)) {
 			this.setState({
 				isIncomeValid: true,
@@ -103,7 +105,7 @@ class App extends Component {
 
 
 	getCurrencies = () => {
-		// >> run this axios call
+		// run this axios call
 		axios({
 			// using custom endpoint built with pieces of state
 			url: `https://api.exchangeratesapi.io/latest?base=${this.state.currentCurrencyCode}&symbols=${this.state.targetCurrencyCode}`,
@@ -116,28 +118,22 @@ class App extends Component {
 
       this.setState({
         targetRate: convertedRate,
-        // currentRate:
       })
     })
     .catch((error) => {
       Swal.fire({
-        title: `Sorry, looks we don't have one of your currencies in our database yet, but we're working on it.`,
-        showClass: {
-          popup: 'animate__animated animate__fadeInDown',
-        },
-        hideClass: {
-          popup: 'animate__animated animate__fadeOutUp',
-        }
-      })
+				text: `Sorry, looks we don't have one of your currencies in our database yet, but we're working on it.`,
+				showClass: {
+					popup: 'animate__animated animate__fadeInDown',
+				},
+				hideClass: {
+					popup: 'animate__animated animate__fadeOutUp',
+					confirmButtonColor: '#81003c',
+				},
+			})
     })
 	}
 
-
-	callbackFunction = (childData) => {
-		this.setState({
-			totalExpenses: childData,
-		})
-	}
 
 	render() {
 		return (
@@ -158,7 +154,6 @@ class App extends Component {
 								id="incomeAmount"
 								value={this.state.userIncome}
 								onChange={this.handleIncomeInputChange}
-								// required
 							/>
 							{this.state.isIncomeValid ? (
 								<p className="errorMessage">Please enter a number value.</p>
@@ -195,7 +190,6 @@ class App extends Component {
 						</select>
 					</div>
 				</section>
-
 				<Currencies
 					currentCurrencyCode={this.state.currentCurrencyCode}
 					parentCallback={this.callbackFunction}
