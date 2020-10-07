@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { app } from 'firebase';
 import Swal from "sweetalert2";
+
+
 class Currencies extends Component {
   constructor() {
     super();
