@@ -138,13 +138,13 @@ class Currencies extends Component {
                 Calculate Total
 								</button>
               {/* use conditional statement to display */}
-              <p>Total: ${this.state.totalExpenses}</p>
+              <p className="totalExpensesParagraph">Total: ${this.state.totalExpenses}</p>
             </div>
           </div>
         </div>
         <div className="results">
           <div className="wrapper">
-            <h2>
+            <h2 className="financialStatus">
               Your <span className="lineOne">Future</span> Financial Status
 							</h2>
             <p>

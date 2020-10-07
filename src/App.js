@@ -178,7 +178,7 @@ class App extends Component {
 
 				<section className="target">
 					<div className="wrapper">
-						<h2>Enter Your Projected Monthly Budget in Your New Destination</h2>
+						<h2 className="monthlyBudgetTitle">Enter Your Projected Monthly Budget in Your New Destination</h2>
 
 						<select className="budgetDropdown" onChange={this.handleTargetChange}>
 							{this.state.countryNames.map((country, index) => {
