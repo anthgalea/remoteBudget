@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/ProjectSix/static/css/main.0c736e80.chunk.css",
-    "main.js": "/ProjectSix/static/js/main.06d59191.chunk.js",
-    "main.js.map": "/ProjectSix/static/js/main.06d59191.chunk.js.map",
-    "runtime-main.js": "/ProjectSix/static/js/runtime-main.a7f7ecca.js",
-    "runtime-main.js.map": "/ProjectSix/static/js/runtime-main.a7f7ecca.js.map",
-    "static/css/2.2ce0d9b2.chunk.css": "/ProjectSix/static/css/2.2ce0d9b2.chunk.css",
-    "static/js/2.fd434a3b.chunk.js": "/ProjectSix/static/js/2.fd434a3b.chunk.js",
-    "static/js/2.fd434a3b.chunk.js.map": "/ProjectSix/static/js/2.fd434a3b.chunk.js.map",
-    "index.html": "/ProjectSix/index.html",
-    "precache-manifest.f91e285f7983c0d104159fdd55b2d99f.js": "/ProjectSix/precache-manifest.f91e285f7983c0d104159fdd55b2d99f.js",
-    "service-worker.js": "/ProjectSix/service-worker.js",
-    "static/css/2.2ce0d9b2.chunk.css.map": "/ProjectSix/static/css/2.2ce0d9b2.chunk.css.map",
-    "static/css/main.0c736e80.chunk.css.map": "/ProjectSix/static/css/main.0c736e80.chunk.css.map",
-    "static/js/2.fd434a3b.chunk.js.LICENSE.txt": "/ProjectSix/static/js/2.fd434a3b.chunk.js.LICENSE.txt"
+    "main.css": "/remoteBudget/static/css/main.ea577997.chunk.css",
+    "main.js": "/remoteBudget/static/js/main.0548503a.chunk.js",
+    "main.js.map": "/remoteBudget/static/js/main.0548503a.chunk.js.map",
+    "runtime-main.js": "/remoteBudget/static/js/runtime-main.f060c401.js",
+    "runtime-main.js.map": "/remoteBudget/static/js/runtime-main.f060c401.js.map",
+    "static/css/2.2ce0d9b2.chunk.css": "/remoteBudget/static/css/2.2ce0d9b2.chunk.css",
+    "static/js/2.fd434a3b.chunk.js": "/remoteBudget/static/js/2.fd434a3b.chunk.js",
+    "static/js/2.fd434a3b.chunk.js.map": "/remoteBudget/static/js/2.fd434a3b.chunk.js.map",
+    "index.html": "/remoteBudget/index.html",
+    "precache-manifest.d9b6fad7acab4bace29bd25029670060.js": "/remoteBudget/precache-manifest.d9b6fad7acab4bace29bd25029670060.js",
+    "service-worker.js": "/remoteBudget/service-worker.js",
+    "static/css/2.2ce0d9b2.chunk.css.map": "/remoteBudget/static/css/2.2ce0d9b2.chunk.css.map",
+    "static/css/main.ea577997.chunk.css.map": "/remoteBudget/static/css/main.ea577997.chunk.css.map",
+    "static/js/2.fd434a3b.chunk.js.LICENSE.txt": "/remoteBudget/static/js/2.fd434a3b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.a7f7ecca.js",
+    "static/js/runtime-main.f060c401.js",
     "static/css/2.2ce0d9b2.chunk.css",
     "static/js/2.fd434a3b.chunk.js",
-    "static/css/main.0c736e80.chunk.css",
-    "static/js/main.06d59191.chunk.js"
+    "static/css/main.ea577997.chunk.css",
+    "static/js/main.0548503a.chunk.js"
   ]
 }
